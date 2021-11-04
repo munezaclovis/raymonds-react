@@ -1,6 +1,4 @@
-import React, { FC, FormEvent, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import UserAvatar from "../../../assets/images/sm/avatar5.jpg";
+import React, { FC, FormEvent, useState } from "react";
 import { IRole, IRoleErrors } from "../../../models/Role";
 
 interface Props {}

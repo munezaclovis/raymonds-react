@@ -8,7 +8,6 @@ import {
     setMiniSidebarMenuOn,
 } from "../../store/ThemeSettings/Actions";
 import Axios from "../../services/api/Axios";
-import ThemeSettingsStorageManager from "../../services/localstorage/ThemeSettingsStorageManager";
 import { ThemeSettingsUrlName } from "../../data/UrlNames";
 
 const ThemeSettings = () => {

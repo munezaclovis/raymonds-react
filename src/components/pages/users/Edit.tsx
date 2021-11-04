@@ -1,14 +1,9 @@
-import React, { FC, useState } from "react";
-import ReactCropper from "react-cropper";
-import ICropper from "cropperjs";
-import SampleImage from "../../../assets/images/image-gallery/1.jpg";
+import React, { FC } from "react";
 import "../../../assets/vendor/cropper/cropper.min.css";
 
 type Props = {};
 
 const Edit: FC<Props> = () => {
-    const [cropData, setCropData] = useState<ICropper.Data>();
-
     return (
         <>
             <div className='flex mx-auto px-1.5'>
