@@ -74,6 +74,7 @@ const Index: FC<Props> = ({ visibleForm, setVisibleForm }) => {
                                                         title=''
                                                         alt='Avatar'
                                                         className='w-10 h-10 rounded'
+                                                        style={{width: '100px'}}
                                                         data-original-title='Avatar Name'
                                                     />
                                                 </td>
