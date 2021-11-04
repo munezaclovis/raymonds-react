@@ -216,7 +216,7 @@ const Form: FC<Props> = ({
                                     }}
                                 >
                                     <option>Select Role</option>
-                                    {rolesList &&
+                                    {(rolesList && rolesList.length > 0) ?
                                         rolesList?.map((item, i) => {
                                             return (
                                                 <option
@@ -226,7 +226,7 @@ const Form: FC<Props> = ({
                                                     {item?.name}
                                                 </option>
                                             );
-                                        })}
+                                        }): ''}
                                 </select>
                             </div>
                         </div>
