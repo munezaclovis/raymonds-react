@@ -1,0 +1,13 @@
+.loader{
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.loader svg{
+  display: inline-block !important;
+}
+
+.loader svg path,
+.loader svg rect{
+  fill: #ffffff;
+}

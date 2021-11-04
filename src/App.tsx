@@ -1,26 +1,42 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { FC, useContext, useEffect } from "react";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import Login from "./components/authentication/Login";
+import Register from "./components/authentication/Register";
+import Layout from "./components/template/Layout";
+import CurrentUserStorageManager from "./services/localstorage/CurrentUserStorageManager";
+import ThemeSettingsStorageManager from "./services/localstorage/ThemeSettingsStorageManager";
+import ProtectedRoute from "./services/middlewares/ProtectedRoute";
+import { setCurrentUser } from "./store/CurrentUser/Actions";
+import { CurrentUserContext } from "./store/CurrentUser/Context";
+import { setThemeSettings } from "./store/ThemeSettings/Actions";
+import { ThemeSettingsContext } from "./store/ThemeSettings/Context";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+const App: FC = () => {
+    const { settings, setSettings } = useContext(ThemeSettingsContext);
+    const { setUser } = useContext(CurrentUserContext);
+
+    useEffect(() => {
+        setSettings(setThemeSettings(ThemeSettingsStorageManager.get()));
+        setUser(setCurrentUser(CurrentUserStorageManager.get()));
+    }, [setSettings, setUser]);
+
+    return (
+        <div
+            className={`${settings.themeColor} ${settings.fontStyle}${
+                settings.lightVersion ? " light_version" : ""
+            }${settings.offcanvas ? " offcanvas-active" : ""}${
+                settings.miniSidebar ? " mini_sidebar" : ""
+            }${settings.miniHover ? " mini_hover" : ""}`}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+            <BrowserRouter>
+                <Switch>
+                    <Route path='/login' exact={true} component={Login} />
+                    <Route path='/register' exact={true} component={Register} />
+                    <ProtectedRoute path='/' component={Layout} />
+                </Switch>
+            </BrowserRouter>
+        </div>
+    );
+};
 
 export default App;
