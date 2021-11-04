@@ -1,7 +1,4 @@
 import React, { FC, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { Modal } from "antd";
-import { RolesDetailsRoute } from "../../../data/RouteNames";
 import { AllRolesUrlName } from "../../../data/UrlNames";
 import Axios from "../../../services/api/Axios";
 import { PaginationType } from "../../../shared/Types";
@@ -16,9 +13,11 @@ type Props = {
 const Index: FC<Props> = ({ visibleForm, setVisibleForm }) => {
     const [rolesList, setRolesList] = useState<PaginationType>();
     const [selectedId, setSelectedId] = useState<number>(0);
+    const [reload, setReload] = useState<boolean>(false);
 
     const showForm = (id: number) => {
         setSelectedId(id);
+        setVisibleForm(true);
     };
 
     const showList = (url: string = "") => {
@@ -33,7 +32,7 @@ const Index: FC<Props> = ({ visibleForm, setVisibleForm }) => {
 
     useEffect(() => {
         showList();
-    }, []);
+    }, [reload]);
 
     if (rolesList) {
         return (
@@ -43,6 +42,9 @@ const Index: FC<Props> = ({ visibleForm, setVisibleForm }) => {
                     visibleForm={visibleForm}
                     setVisibleForm={setVisibleForm}
                     selectedId={selectedId}
+                    setSelectedId={setSelectedId}
+                    reload={reload}
+                    setReload={setReload}
                 />
                 <div className='flex -mx-3 clearfix'>
                     <div className='w-full'>
@@ -50,9 +52,9 @@ const Index: FC<Props> = ({ visibleForm, setVisibleForm }) => {
                             <table className='table header-border table-hover table-custom spacing8'>
                                 <thead>
                                     <tr>
-                                        <th></th>
+                                        <th className='w-32'></th>
                                         <th>Name</th>
-                                        <th>Action</th>
+                                        <th className='w-52'>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>

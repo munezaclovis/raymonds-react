@@ -1,66 +1,88 @@
-import React, { FC } from 'react'
+import React, { FC } from "react";
 
 const Dashboard: FC = () => {
     return (
         <>
-            <div className="row clearfix">
-                <div className="col-lg-3 col-md-6">
-                    <div className="card">
-                        <div className="body">
-                            <div className="w_summary">
-                                <div className="s_chart">
-                                    <span className="chart">
+            <div className='row clearfix'>
+                <div className='col-lg-3 col-md-6'>
+                    <div className='card'>
+                        <div className='body'>
+                            <div className='w_summary'>
+                                <div className='s_chart'>
+                                    <span className='chart'>
                                         {/* <ApexCharts /> */}
                                     </span>
                                 </div>
-                                <div className="s_detail">
-                                    <h2 className="font700 mb-0">$15K</h2>
-                                    <span>67% <i className="fa fa-level-up text-success"></i> Total income</span>
+                                <div className='s_detail'>
+                                    <h2 className='font700 mb-0'>$15K</h2>
+                                    <span>
+                                        67%{" "}
+                                        <i className='fa fa-level-up text-success'></i>{" "}
+                                        Total income
+                                    </span>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div className="col-lg-3 col-md-6">
-                    <div className="card">
-                        <div className="body">
-                            <div className="w_summary">
-                                <div className="s_chart">
-                                    <span className="chart">{/* <ApexCharts /> */}</span>
+                <div className='col-lg-3 col-md-6'>
+                    <div className='card'>
+                        <div className='body'>
+                            <div className='w_summary'>
+                                <div className='s_chart'>
+                                    <span className='chart'>
+                                        {/* <ApexCharts /> */}
+                                    </span>
                                 </div>
-                                <div className="s_detail">
-                                    <h2 className="font700 mb-0">$1258</h2>
-                                    <span>15% <i className="fa fa-level-up text-success"></i> Total Expense</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="col-lg-3 col-md-6">
-                    <div className="card">
-                        <div className="body">
-                            <div className="w_summary">
-                                <div className="s_chart">
-                                    <span className="chart">{/* <ApexCharts /> */}</span>
-                                </div>
-                                <div className="s_detail">
-                                    <h2 className="font700 mb-0">$2315</h2>
-                                    <span>23% <i className="fa fa-level-up text-success"></i> Total Growth</span>
+                                <div className='s_detail'>
+                                    <h2 className='font700 mb-0'>$1258</h2>
+                                    <span>
+                                        15%{" "}
+                                        <i className='fa fa-level-up text-success'></i>{" "}
+                                        Total Expense
+                                    </span>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div className="col-lg-3 col-md-6">
-                    <div className="card">
-                        <div className="body">
-                            <div className="w_summary">
-                                <div className="s_chart">
-                                    <span className="chart">{/* <ApexCharts /> */}</span>
+                <div className='col-lg-3 col-md-6'>
+                    <div className='card'>
+                        <div className='body'>
+                            <div className='w_summary'>
+                                <div className='s_chart'>
+                                    <span className='chart'>
+                                        {/* <ApexCharts /> */}
+                                    </span>
                                 </div>
-                                <div className="s_detail">
-                                    <h2 className="font700 mb-0">$1025</h2>
-                                    <span>52% <i className="fa fa-level-up text-success"></i> Bounce Rate</span>
+                                <div className='s_detail'>
+                                    <h2 className='font700 mb-0'>$2315</h2>
+                                    <span>
+                                        23%{" "}
+                                        <i className='fa fa-level-up text-success'></i>{" "}
+                                        Total Growth
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className='col-lg-3 col-md-6'>
+                    <div className='card'>
+                        <div className='body'>
+                            <div className='w_summary'>
+                                <div className='s_chart'>
+                                    <span className='chart'>
+                                        {/* <ApexCharts /> */}
+                                    </span>
+                                </div>
+                                <div className='s_detail'>
+                                    <h2 className='font700 mb-0'>$1025</h2>
+                                    <span>
+                                        52%{" "}
+                                        <i className='fa fa-level-up text-success'></i>{" "}
+                                        Bounce Rate
+                                    </span>
                                 </div>
                             </div>
                         </div>
@@ -68,7 +90,7 @@ const Dashboard: FC = () => {
                 </div>
             </div>
 
-            <div className="row clearfix">
+            {/* <div className="row clearfix">
                 <div className="col-12 col-sm-12">
                     <div className="card">
                         <div className="header">
@@ -165,9 +187,9 @@ const Dashboard: FC = () => {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> */}
         </>
-    )
-}
+    );
+};
 
-export default Dashboard
+export default Dashboard;

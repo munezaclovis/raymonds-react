@@ -1,8 +1,7 @@
-export type IRole =
-    | {
-          name: string | undefined;
-      }
-    | undefined;
+export type IRole = {
+    id: number | null | undefined;
+    name: string | null | undefined;
+};
 
 export type IRoleErrors = {
     message: string | null | undefined;

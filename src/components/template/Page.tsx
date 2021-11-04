@@ -10,7 +10,7 @@ interface Props {
 const Page: FC<Props> = ({ title, Component, ...rest }) => {
     const history = useHistory();
     const Data = history.location.pathname.replace("/", "").split("/");
-    const [visibleForm, setVisibleForm] = useState(true);
+    const [visibleForm, setVisibleForm] = useState(false);
 
     useEffect(() => {
         document.title = title;

@@ -21,7 +21,7 @@ const ThemeSettings = () => {
     }, [openSettingBar]);
 
     if (openSettingBar === false && prevOpenSettingsBar.current === true) {
-        Axios.put(ThemeSettingsUrlName + ThemeSettingsStorageManager.get().id, {
+        Axios.put(`${ThemeSettingsUrlName}/0`, {
             themeColor: settings.themeColor,
             fontStyle: settings.fontStyle,
             lightVersion: settings.lightVersion,

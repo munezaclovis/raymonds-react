@@ -2,8 +2,8 @@ import React, { FC, FormEvent, useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import UserAvatar from "../../../assets/images/sm/avatar5.jpg";
-import { UsersAddRoute, UsersEditRoute } from "../../../data/RouteNames";
-import { UserUrlName } from "../../../data/UrlNames";
+import { UsersAddRoute } from "../../../data/RouteNames";
+import { UsersUrlName } from "../../../data/UrlNames";
 import { IUser } from "../../../models/User";
 import Axios from "../../../services/api/Axios";
 
@@ -14,7 +14,7 @@ const Details: FC<Props> = () => {
     const [state, setState] = useState<IUser>({ name: "", email: "" } as IUser);
 
     useEffect(() => {
-        Axios.get<IUser>(UserUrlName + "/" + id)
+        Axios.get<IUser>(UsersUrlName + "/" + id)
             .then((response) => {
                 setState(response.data);
             })
@@ -45,7 +45,7 @@ const Details: FC<Props> = () => {
                                         <input
                                             type='text'
                                             name='name'
-                                            value={state?.name}
+                                            value={state?.name ?? ""}
                                             className='form-control'
                                             placeholder='name'
                                             onChange={(
@@ -65,7 +65,7 @@ const Details: FC<Props> = () => {
                                         <input
                                             type='email'
                                             name='email'
-                                            value={state?.email}
+                                            value={state?.email ?? ""}
                                             className='form-control'
                                             placeholder='email'
                                             onChange={(
@@ -93,6 +93,7 @@ const Details: FC<Props> = () => {
                                                 setState({
                                                     ...state,
                                                     role: {
+                                                        ...state.role,
                                                         name: e.currentTarget
                                                             .value,
                                                     },

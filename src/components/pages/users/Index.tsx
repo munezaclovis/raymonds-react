@@ -1,19 +1,29 @@
 import React, { FC, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { UsersDetailsRoute } from "../../../data/RouteNames";
 import { AllUsersUrlName } from "../../../data/UrlNames";
 import Axios from "../../../services/api/Axios";
 import { PaginationType } from "../../../shared/Types";
-import UserAvatar from "../../../assets/images/xs/avatar5.jpg";
-import { AxiosResponse } from "axios";
 import BreadCrumbAddBtn from "../../template/BreadCrumbAddBtn";
+import Form from "./Form";
+import RoleBadge from "../../utilities/role/RoleBadge";
 
-const Index: FC = () => {
+type Props = {
+    visibleForm: boolean;
+    setVisibleForm: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+const Index: FC<Props> = ({ visibleForm, setVisibleForm }) => {
     const [usersList, setUsersList] = useState<PaginationType>();
+    const [selectedId, setSelectedId] = useState<number>(0);
+    const [reload, setReload] = useState<boolean>(false);
+
+    const showForm = (id: number) => {
+        setSelectedId(id);
+        setVisibleForm(true);
+    };
 
     const showList = (url: string = "") => {
-        Axios.get<any>(url === "" ? AllUsersUrlName : url)
-            .then((response: AxiosResponse<PaginationType>) => {
+        Axios.get<PaginationType>(url === "" ? AllUsersUrlName : url)
+            .then((response) => {
                 setUsersList(response.data);
             })
             .catch((error) => {
@@ -23,12 +33,20 @@ const Index: FC = () => {
 
     useEffect(() => {
         showList();
-    }, []);
+    }, [reload]);
 
     if (usersList) {
         return (
             <>
                 <BreadCrumbAddBtn />
+                <Form
+                    visibleForm={visibleForm}
+                    setVisibleForm={setVisibleForm}
+                    selectedId={selectedId}
+                    setSelectedId={setSelectedId}
+                    reload={reload}
+                    setReload={setReload}
+                />
                 <div className='flex -mx-3 clearfix'>
                     <div className='w-full'>
                         <div className='table-responsive'>
@@ -50,7 +68,7 @@ const Index: FC = () => {
                                             <tr key={i}>
                                                 <td className='flex items-center'>
                                                     <img
-                                                        src={UserAvatar}
+                                                        src={`https://robohash.org/f6cd95755fc8ecc5a3d575277b09611f?set=set3&bgset=&size=400x400`}
                                                         data-toggle='tooltip'
                                                         data-placement='top'
                                                         title=''
@@ -62,21 +80,22 @@ const Index: FC = () => {
                                                 <td>{item.name}</td>
                                                 <td>{item.email}</td>
                                                 <td>
-                                                    <span className='badge badge-default'>
-                                                        {item.role.name ??
-                                                            "no role"}
-                                                    </span>
+                                                    <RoleBadge
+                                                        name={item.role.name}
+                                                    />
                                                 </td>
                                                 <td>{item.created_at}</td>
                                                 <td>{item.updated_at}</td>
                                                 <td className='space-x-1'>
-                                                    <Link
+                                                    <button
                                                         className='btn btn-sm btn-default'
                                                         title='Edit'
-                                                        to={`${UsersDetailsRoute}/${item.id}`}
+                                                        onClick={() =>
+                                                            showForm(item.id)
+                                                        }
                                                     >
                                                         <i className='icon-info'></i>
-                                                    </Link>
+                                                    </button>
                                                     <button
                                                         type='button'
                                                         onClick={() => {}}

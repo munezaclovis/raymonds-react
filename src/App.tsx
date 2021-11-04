@@ -20,22 +20,21 @@ const App: FC = () => {
         setUser(setCurrentUser(CurrentUserStorageManager.get()));
     }, [setSettings, setUser]);
 
+    document.getElementsByTagName("body")[0].className = `${
+        settings.themeColor
+    } ${settings.fontStyle}${settings.lightVersion ? " light_version" : ""}${
+        settings.offcanvas ? " offcanvas-active" : ""
+    }${settings.miniSidebar ? " mini_sidebar" : ""}${
+        settings.miniHover ? " mini_hover" : ""
+    }`;
     return (
-        <div
-            className={`${settings.themeColor} ${settings.fontStyle}${
-                settings.lightVersion ? " light_version" : ""
-            }${settings.offcanvas ? " offcanvas-active" : ""}${
-                settings.miniSidebar ? " mini_sidebar" : ""
-            }${settings.miniHover ? " mini_hover" : ""}`}
-        >
-            <BrowserRouter>
-                <Switch>
-                    <Route path='/login' exact={true} component={Login} />
-                    <Route path='/register' exact={true} component={Register} />
-                    <ProtectedRoute path='/' component={Layout} />
-                </Switch>
-            </BrowserRouter>
-        </div>
+        <BrowserRouter>
+            <Switch>
+                <Route path='/login' exact={true} component={Login} />
+                <Route path='/register' exact={true} component={Register} />
+                <ProtectedRoute path='/' component={Layout} />
+            </Switch>
+        </BrowserRouter>
     );
 };
 

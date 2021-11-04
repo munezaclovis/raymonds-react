@@ -33,7 +33,7 @@ const Details: FC<Props> = () => {
                                         <input
                                             type='text'
                                             name='name'
-                                            value={state?.name}
+                                            value={state?.name ?? ""}
                                             className={`form-control${
                                                 errors?.name !== null &&
                                                 errors?.name !== undefined
